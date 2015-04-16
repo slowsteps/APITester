@@ -35,7 +35,7 @@ public class API : MonoBehaviour {
 
 	IEnumerator GetURL (string endpoint,callBack callback)
 	{
-		print("in GetURL");
+		//print("in GetURL");
 		string url = baseURL + endpoint + "?access_token="+accessToken;
 		WWW request = new WWW(url);
 		yield return request;
@@ -87,7 +87,7 @@ public class API : MonoBehaviour {
 
 	IEnumerator GetImageFromWWW(string url,imageCallBack imagecallback)
 	{
-		print ("GetImageFromWWW");
+		//print ("GetImageFromWWW");
 		WWW request = new WWW (url);
 		yield return request;
 		imagecallback(request.texture);

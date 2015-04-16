@@ -8,7 +8,7 @@ public class Avatar : MonoBehaviour,IWaitingForInit {
 	
 	public void Init () 
 	{
-		print ("Init Avatar");
+		//print ("Init Avatar");
 		API.instance.Call("/v1/me",OnReady);
 		
 	}
@@ -22,7 +22,6 @@ public class Avatar : MonoBehaviour,IWaitingForInit {
 
 	private void OnReady(JSONObject j)
 	{
-		print ("display name: " + j["me"]["display_name"].str);
 		API.instance.GetImage(j["me"]["avatar_url"].str,OnImageReady);
 	}
 

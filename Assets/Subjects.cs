@@ -10,22 +10,28 @@ public class Subjects : MonoBehaviour,IWaitingForInit {
 
 	public void Init () 
 	{
-		print ("Init Subjects");
+		//print ("Init Subjects");
 		API.instance.Call("/v1/tablet",OnSubjectsReady);
 	}
 	
 	private void OnSubjectsReady(JSONObject j)
 	{
-		jsonDump = j.str;
+		jsonDump = j.Print(true);
 
 		for (int i=0;i<j["subjects"].Count;i++)
 		{
-			string subjectname = j["subjects"][i]["title"].str;
 			GameObject go = Instantiate(subject);
-			go.GetComponent<Text>().text = subjectname;
-			go.transform.parent = this.transform;
-			go.name = subjectname;
+			
+			go.transform.SetParent(transform);
+			go.GetComponent<Subject>().Init(j["subjects"][i]);
+
+			
+			
 		}
 		
 	}
+
+			                                       
+                                           
+
 }
